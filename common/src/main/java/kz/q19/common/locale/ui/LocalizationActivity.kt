@@ -90,11 +90,11 @@ abstract class LocalizationActivity : AppCompatActivity, OnLocaleChangedListener
         localizationDelegate.setLanguage(this, language, country)
     }
 
-    fun setLanguage(locale: Locale) {
+    fun setLocale(locale: Locale) {
         localizationDelegate.setLanguage(this, locale)
     }
 
-    fun getCurrentLanguage(): Locale {
+    fun getCurrentLocale(): Locale {
         return localizationDelegate.getLanguage(this)
     }
 

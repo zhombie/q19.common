@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package kz.q19.common.preferences
 
 import android.content.Context
