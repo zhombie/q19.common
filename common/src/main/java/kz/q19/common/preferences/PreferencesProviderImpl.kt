@@ -4,6 +4,7 @@ package kz.q19.common.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import kz.q19.common.model.UserInfo
 
 class PreferencesProviderImpl private constructor(context: Context) : PreferencesProvider {
 
@@ -11,6 +12,8 @@ class PreferencesProviderImpl private constructor(context: Context) : Preference
         private const val PREFERENCES_NAME = "q19.preferences"
 
         private const val KEY_LANGUAGE = "language"
+        private const val KEY_USER_ID = "user_id"
+        private const val KEY_TOKEN = "token"
         private const val KEY_ACTIVE_AUDIO_RECORD_ID = "active_audio_record_id"
 
         @Volatile
@@ -29,6 +32,10 @@ class PreferencesProviderImpl private constructor(context: Context) : Preference
             context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
     }
 
+    /**
+     * [PreferencesProvider] implementation
+     */
+
     override fun getLanguage(): String {
         return sharedPreferences.getString(KEY_LANGUAGE, "") ?: ""
     }
@@ -36,6 +43,32 @@ class PreferencesProviderImpl private constructor(context: Context) : Preference
     override fun setLanguage(language: String) {
         apply { putString(KEY_LANGUAGE, language) }
     }
+
+    /**
+     * [AuthPreferences] implementation
+     */
+
+    override fun getUserInfo(): UserInfo? {
+        val userId = sharedPreferences.getLong(KEY_USER_ID, -1L)
+        val token = sharedPreferences.getString(KEY_TOKEN, null)
+
+        return if (userId < 0 || token.isNullOrBlank()) {
+            null
+        } else {
+            UserInfo(userId = userId, token = token)
+        }
+    }
+
+    override fun setUserInfo(userInfo: UserInfo) {
+        apply {
+            putLong(KEY_USER_ID, userInfo.userId)
+            putString(KEY_TOKEN, userInfo.token)
+        }
+    }
+
+    /**
+     * [AudioRecorderPreferences] implementation
+     */
 
     override fun getActiveAudioRecordId(): Long {
         return sharedPreferences.getLong(KEY_ACTIVE_AUDIO_RECORD_ID, -1)
