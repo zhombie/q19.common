@@ -52,10 +52,10 @@ class PreferencesProviderImpl private constructor(context: Context) : Preference
         val userId = sharedPreferences.getLong(KEY_USER_ID, -1L)
         val token = sharedPreferences.getString(KEY_TOKEN, null)
 
-        return if (userId < 0 || token.isNullOrBlank()) {
-            null
-        } else {
+        return if (userId > -1L && !token.isNullOrBlank()) {
             UserInfo(userId = userId, token = token)
+        } else {
+            null
         }
     }
 
