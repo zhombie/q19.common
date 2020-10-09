@@ -66,6 +66,13 @@ class PreferencesProviderImpl private constructor(context: Context) : Preference
         }
     }
 
+    override fun removeUserInfo() {
+        apply {
+            remove(KEY_USER_ID)
+            remove(KEY_TOKEN)
+        }
+    }
+
     /**
      * [AudioRecorderPreferences] implementation
      */
@@ -76,6 +83,10 @@ class PreferencesProviderImpl private constructor(context: Context) : Preference
 
     override fun setActiveAudioRecordId(id: Long) {
         apply { putLong(KEY_ACTIVE_AUDIO_RECORD_ID, id) }
+    }
+
+    override fun removeActiveAudioRecordId() {
+        apply { remove(KEY_ACTIVE_AUDIO_RECORD_ID) }
     }
 
     private fun apply(lambda: SharedPreferences.Editor.() -> Unit): SharedPreferences.Editor? {
