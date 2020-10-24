@@ -4,7 +4,6 @@ package kz.q19.common.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
-import kz.q19.common.model.UserInfo
 
 class PreferencesProviderImpl private constructor(context: Context) : PreferencesProvider {
 
@@ -48,21 +47,21 @@ class PreferencesProviderImpl private constructor(context: Context) : Preference
      * [AuthPreferences] implementation
      */
 
-    override fun getUserInfo(): UserInfo? {
+    override fun getUserInfo(): Pair<Long, String>? {
         val userId = sharedPreferences.getLong(KEY_USER_ID, -1L)
         val token = sharedPreferences.getString(KEY_TOKEN, null)
 
         return if (userId > -1L && !token.isNullOrBlank()) {
-            UserInfo(userId = userId, token = token)
+            userId to token
         } else {
             null
         }
     }
 
-    override fun setUserInfo(userInfo: UserInfo) {
+    override fun setUserInfo(userInfo: Pair<Long, String>) {
         apply {
-            putLong(KEY_USER_ID, userInfo.userId)
-            putString(KEY_TOKEN, userInfo.token)
+            putLong(KEY_USER_ID, userInfo.first)
+            putString(KEY_TOKEN, userInfo.second)
         }
     }
 
