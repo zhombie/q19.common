@@ -13,9 +13,9 @@ import androidx.annotation.FloatRange
  * GitHub: https://github.com/rock3r/uplift
  */
 class TweakableOutlineProvider(
-    val cornerRadius: Float = 0f,
-    var scaleX: Float = 1f,
-    var scaleY: Float = 1f,
+    val cornerRadius: Float = 0F,
+    var scaleX: Float = 1F,
+    var scaleY: Float = 1F,
     var yShift: Int = 0
 ) : ViewOutlineProvider() {
 

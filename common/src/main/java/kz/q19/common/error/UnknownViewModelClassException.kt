@@ -10,7 +10,7 @@ class UnknownViewModelClassException(val className: String? = null) : IllegalSta
             return if (className.isNullOrBlank()) {
                 text
             } else {
-                "Unknown ViewModel class. $className"
+                "$text. $className"
             }
         }
 

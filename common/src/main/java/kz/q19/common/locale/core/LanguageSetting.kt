@@ -73,10 +73,10 @@ object LanguageSetting {
 
     fun getLanguageWithDefault(context: Context, default: Locale): Locale {
         return getLanguage(context)?.let { locale ->
-            locale
+            return@let locale
         } ?: run {
             setLanguage(context, default)
-            default
+            return@run default
         }
     }
 

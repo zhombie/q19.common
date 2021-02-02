@@ -25,14 +25,14 @@ package kz.q19.common.locale.core
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
-import android.os.Handler
 import android.os.LocaleList
 import java.util.*
 
-open class LocalizationActivityDelegate(val activity: Activity) {
+open class LocalizationActivityDelegate constructor(val activity: Activity) {
     private var isLocalizationChanged = false
     private lateinit var currentLanguage: Locale
     private val localeChangedListeners = ArrayList<OnLocaleChangedListener>()
@@ -56,7 +56,7 @@ open class LocalizationActivityDelegate(val activity: Activity) {
 
     // If activity is run to back stack. So we have to check if this activity is resume working.
     fun onResume(context: Context) {
-        Handler().post {
+        activity.runOnUiThread {
             checkLocaleChange(context)
             checkAfterLocaleChanging()
         }
@@ -160,10 +160,10 @@ open class LocalizationActivityDelegate(val activity: Activity) {
     // If yes, bundle will be remove and set boolean flag to "true".
     private fun checkBeforeLocaleChanging() {
         val isLocalizationChanged =
-            activity.intent.getBooleanExtra(KEY_ACTIVITY_LOCALE_CHANGED, false)
+            activity.intent?.getBooleanExtra(KEY_ACTIVITY_LOCALE_CHANGED, false) ?: false
         if (isLocalizationChanged) {
             this.isLocalizationChanged = true
-            activity.intent.removeExtra(KEY_ACTIVITY_LOCALE_CHANGED)
+            activity.intent?.removeExtra(KEY_ACTIVITY_LOCALE_CHANGED)
         }
     }
 
@@ -185,6 +185,8 @@ open class LocalizationActivityDelegate(val activity: Activity) {
     // Let's take it change! (Using recreate method that available on API 11 or more.
     private fun notifyLanguageChanged() {
         sendOnBeforeLocaleChangedEvent()
+        if (activity.intent == null)
+            activity.intent = Intent()
         activity.intent.putExtra(KEY_ACTIVITY_LOCALE_CHANGED, true)
         activity.recreate()
     }
