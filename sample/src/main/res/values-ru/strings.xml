@@ -2,4 +2,5 @@
 <resources>
     <string name="application">Приложение</string>
     <string name="language">Язык</string>
+    <string name="navigate">Навигация</string>
 </resources>

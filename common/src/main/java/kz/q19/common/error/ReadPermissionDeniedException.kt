@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+package kz.q19.common.error
 
 import kz.q19.common.R
 import kz.q19.common.error.BaseException

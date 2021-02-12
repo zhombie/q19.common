@@ -2,4 +2,5 @@
 <resources>
     <string name="application">Қосымша</string>
     <string name="language">Тіл</string>
+    <string name="navigate">Өту</string>
 </resources>
