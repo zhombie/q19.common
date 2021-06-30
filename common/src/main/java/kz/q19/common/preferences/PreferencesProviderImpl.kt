@@ -24,12 +24,8 @@ class PreferencesProviderImpl private constructor(context: Context) : Preference
         const val ACTIVE_AUDIO_RECORD_ID = "active_audio_record_id"
     }
 
-    private val sharedPreferences: SharedPreferences
-
-    init {
-        sharedPreferences =
-            context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
-    }
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
 
     /**
      * [PreferencesProvider] implementation

@@ -1,7 +1,6 @@
 package kz.q19.common.error
 
 import kz.q19.common.R
-import kz.q19.common.error.BaseException
 
 class ReadPermissionDeniedException : BaseException() {
     override val text: Int

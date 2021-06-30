@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="error_unknown">Unexpected error</string>
-    <string name="error_cannot_create_file">Can\'t create file</string>
-    <string name="error_invalid_output_file">Invalid output file</string>
-    <string name="error_read_permission_denied">Permission denied</string>
-    <string name="error_no_available_space">No available space!</string>
+    <string name="error_unknown">Күтпеген қате</string>
+    <string name="error_cannot_create_file">Жаңа файлды өңдеу мүмкін емес</string>
+    <string name="error_invalid_output_file">Жарамсыз шығыс файлы</string>
+    <string name="error_read_permission_denied">Рұқсат беруден бас тартылды</string>
+    <string name="error_no_available_space">Бос орын жоқ!</string>
 </resources>

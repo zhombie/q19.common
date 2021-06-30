@@ -10,7 +10,8 @@ class Application : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        LocaleManager.initialize(applicationContext, listOf(Locale.ENGLISH, Locale("ru"), Locale("kk")))
+        val supportedLocales = listOf(Locale.ENGLISH, Locale("ru"), Locale("kk"))
+        LocaleManager.initialize(applicationContext, supportedLocales)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

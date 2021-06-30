@@ -32,11 +32,8 @@ internal class LocalePersistor constructor(context: Context) {
         private const val KEY_VARIANT = "variant"
     }
 
-    private val sharedPreferences: SharedPreferences
-
-    init {
-        sharedPreferences = context.getSharedPreferences(NAME_SHARED_PREFERENCES, Context.MODE_PRIVATE)
-    }
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences(NAME_SHARED_PREFERENCES, Context.MODE_PRIVATE)
 
     fun load(): Locale? {
         var locale: Locale? = null
