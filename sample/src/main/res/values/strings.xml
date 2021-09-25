@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Common</string>
+    <string name="app_name" translatable="false">q19.common</string>
 
     <string name="application">Application</string>
     <string name="language">Language</string>
