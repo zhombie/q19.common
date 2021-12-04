@@ -1,4 +1,4 @@
-package kz.q19.common
+package kz.q19.common.sample
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate

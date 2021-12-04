@@ -1,26 +1,17 @@
-package kz.q19.common
+package kz.q19.common.sample
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.*
 import java.util.*
 
-class ChildActivity : BaseActivity() {
-
-    companion object {
-        fun newIntent(context: Context): Intent {
-            return Intent(context, ChildActivity::class.java)
-        }
-    }
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_child)
+        setContentView(R.layout.activity_main)
 
-        val textView = findViewById<TextView>(R.id.textView)
+//        val textView = findViewById<TextView>(R.id.textView)
         val button = findViewById<Button>(R.id.button)
         val button2 = findViewById<Button>(R.id.button2)
 
@@ -41,7 +32,7 @@ class ChildActivity : BaseActivity() {
         }
 
         button2.setOnClickListener {
-            finish()
+            startActivity(ChildActivity.newIntent(this))
         }
     }
 

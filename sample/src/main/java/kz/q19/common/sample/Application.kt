@@ -1,4 +1,4 @@
-package kz.q19.common
+package kz.q19.common.sample
 
 import android.app.Application
 import android.content.res.Configuration
