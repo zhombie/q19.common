@@ -21,7 +21,6 @@ class PreferencesProviderImpl private constructor(context: Context) : Preference
         const val LANGUAGE = "language"
         const val USER_ID = "user_id"
         const val TOKEN = "token"
-        const val ACTIVE_AUDIO_RECORD_ID = "active_audio_record_id"
     }
 
     private val sharedPreferences: SharedPreferences =
@@ -66,22 +65,6 @@ class PreferencesProviderImpl private constructor(context: Context) : Preference
             remove(Key.USER_ID)
             remove(Key.TOKEN)
         }
-    }
-
-    /**
-     * [AudioRecordPreferences] implementation
-     */
-
-    override fun getActiveAudioRecordId(): Long {
-        return sharedPreferences.getLong(Key.ACTIVE_AUDIO_RECORD_ID, -1)
-    }
-
-    override fun setActiveAudioRecordId(id: Long) {
-        apply { putLong(Key.ACTIVE_AUDIO_RECORD_ID, id) }
-    }
-
-    override fun removeActiveAudioRecordId() {
-        apply { remove(Key.ACTIVE_AUDIO_RECORD_ID) }
     }
 
     private fun apply(lambda: SharedPreferences.Editor.() -> Unit): SharedPreferences.Editor? {
